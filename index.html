@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de la Oruga</title>
+    <link rel="stylesheet" href="styles.css">
+   
+</head>
+<body>
+    <div id="start-screen" >
+        <h1 style="font-family: 'Courier New', Courier, monospace; color:White">Bienvenid@ a Orugame</h1>
+        <span style=" color:White"> Por Lilly Lopez</span>
+        <button id="start-button">Comenzar</button>
+    </div>
+    <div id="game-container">
+        <div id="score">Puntuación: 0</div>
+        <div id="caterpillar"></div>
+        <div id="predator"></div>
+        <div id="point"></div>
+    </div>
+    <script>
+        document.getElementById("start-button").addEventListener("click", function() {
+            // Ocultar la pantalla de inicio
+            document.getElementById("start-screen").style.display = "none";
+            
+            // Mostrar el contenedor del juego
+            document.getElementById("game-container").style.display = "block";
+            
+            // Cargar el script del juego
+            var script = document.createElement("script");
+            script.src = "script.js";
+            document.body.appendChild(script);
+
+            //Desaparecer start-screen
+            document.getElementById("start-screen").style.display = "none";
+            //Eliminar el start-screen del DOM
+            document.getElementById("start-screen").remove();
+
+        });
+    </script>
+    
+</body>
+</html>
