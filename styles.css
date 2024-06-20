@@ -1,0 +1,200 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    transition: background-color 0.3s ease;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('https://images.unsplash.com/photo-1514064019862-23e2a332a6a6?q=80&w=1914&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+}
+#start-screen h1 {
+    color: #333;
+    font-size: 32px;
+    text-align: center;
+    margin-top: 100px;
+}
+
+#start-screen button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto;
+}
+
+#game-container {
+    display: none;
+    text-align: center;
+    margin-top: 100px;
+}
+
+
+
+.dark-mode {
+    background-color: #2e2e2e;
+    color: #fff;
+}
+
+#score {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#game-container {
+    position: relative;
+    width: 1000px;
+    height: 700px;
+    border: 2px solid #000;
+    background-color: #d4d4d4;
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+}
+
+.dark-mode #game-container {
+    background-color: #444;
+    border-color: #888;
+}
+
+#caterpillar, #predator, #second-predator, #point {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-size: cover;
+}
+#caterpillar {
+    background-image: url('caterpillar.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 30px; /* Ajusta el tamaño del contenedor si es necesario */
+    height: 30px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    transform-origin: center; /* Establece el origen de la transformación */
+}
+
+#caterpillar.move-right {
+    transform: scaleX(1); /* No se necesita rotación cuando se mueve a la derecha */
+}
+
+#caterpillar.move-left {
+    transform: scaleX(-1); /* Voltea horizontalmente cuando se mueve a la izquierda */
+}
+
+#predator, #second-predator {
+    background-image: url('predator.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    width: 50px; /* Ajusta el tamaño del contenedor si es necesario */
+    height: 50px;
+}
+
+
+#predator {
+    left: 970px;
+    top: 970px;
+}
+
+#second-predator {
+    left: 0px;
+    top: 0px;
+    display: none; /* Inicialmente oculto */
+}
+
+#point {
+    background-color: rgb(194, 255, 175);
+    border-radius: 50%;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh; /* Usar la altura completa del viewport */
+    margin: 0;
+    background-color: #f0f0f0;
+    transition: background-color 0.3s ease;
+}
+
+.dark-mode {
+    background-color: #2e2e2e;
+    color: #fff;
+}
+
+#score {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#game-container {
+    position: relative;
+    width: 1000px;
+    height: 700px;
+    border: 2px solid #000;
+    background-color: #fff;
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+}
+
+.dark-mode #game-container {
+    background-color: #444;
+    border-color: #888;
+}
+
+#caterpillar, #predator, #second-predator, #point {
+    position: absolute;
+    width: 30px; /* Ajustado para coincidir con el tamaño del SVG */
+    height: 30px; /* Ajustado para coincidir con el tamaño del SVG */
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#caterpillar {
+    background-image: url('caterpillar.svg');
+    top: 10px;
+    left: 10px;
+    transform-origin: center; /* Establece el origen de la transformación */
+}
+
+#caterpillar.move-right {
+    transform: scaleX(1); /* No se necesita rotación cuando se mueve a la derecha */
+}
+
+#caterpillar.move-left {
+    transform: scaleX(-1); /* Voltea horizontalmente cuando se mueve a la izquierda */
+}
+
+#predator, #second-predator {
+    background-image: url('predator.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    width: 50px; /* Ajusta el tamaño del contenedor si es necesario */
+    height: 50px;
+}
+
+#predator {
+    left: 970px;
+    top: 970px;
+}
+
+#second-predator {
+    left: 0px;
+    top: 0px;
+    display: none; /* Inicialmente oculto */
+}
+
+#point {
+    
+    background-image: url('point.svg');
+    border-radius: 50%;
+}
