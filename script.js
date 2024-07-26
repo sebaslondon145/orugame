@@ -165,13 +165,39 @@ function movePoint() {
 }
 
 function endGame() {
-    alert('Game Over!');
-    document.removeEventListener('keydown', moveCaterpillar);
+    // Hide game container
+    gameContainer.style.display = "none";
+
+    // Show the image
+    let image = document.getElementById("end-image");
+    if (!image) {
+        image = document.createElement('img');
+        image.id = 'end-image';
+        image.src = 'aja.jpeg';
+        image.style.position = 'absolute';
+        image.style.top = '0';
+        image.style.left = '0';
+        image.style.width = '100%'; // Adjust size as needed
+        image.style.height = '100%'; // Adjust size as needed
+        document.body.appendChild(image);
+    } else {
+        image.style.display = 'block';
+    }
+
+    this.audio.pause();
+
+    let audio2 = new Audio('aja.mp3');
+    audio2.play();
+
+    // Stop the game loop and intervals
     clearInterval(predatorInterval);
     clearInterval(secondPredatorInterval);
     clearInterval(gameLoop);
-    // Reset the game reload the page
-    location.reload();
+
+    audio2.addEventListener('ended', () => {
+        // Reload the page after the audio finishes playing
+        window.location.reload();
+    });
 }
 
 function endGameFool() {

@@ -6,25 +6,63 @@
     <title>Feliz Cumpleaños Santiago</title>
     <link rel="stylesheet" href="happy.css">
     <script>
-         function playAudio() {
-            var audioah = new Audio("pollo.mp3");
-            audioah.play().catch(function(error) {
-                console.error("Error al intentar reproducir el audio:", error);
-            });
-            // Elimina el manejador de eventos para evitar múltiples reproducciones
-            document.removeEventListener('click', playAudio);
+        // Función para mostrar el contenido de la página
+        function mostrarContenido() {
+            document.querySelector('.container').style.display = 'block';
+            document.querySelector('#miVideo').style.display = 'block';
+            document.querySelector('.rotating-image').style.display = 'block';
+            document.querySelector('.particles').style.display = 'block';
+            document.getElementById('mostrarBoton').style.display = 'none'; // Oculta el botón después de hacer clic
+            playAudio();
         }
 
         // Añade el manejador de eventos a la página
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.getElementById('mostrarBoton').addEventListener('click', mostrarContenido);
+        });
+
+        // Función para reproducir el audio
+        function playAudio() {
+            const audio = new Audio('pollo.mp3');
+            audio.play();
+        }
+
+        // Reproduce el audio al cargar la página
+
+
+        // Añade el manejador de eventos de clic para reproducir el audio
         document.addEventListener('click', playAudio);
+
+        // Después de 10 segundos se manda a otra página
+       setTimeout(() => {
+             window.location.href = "naruto.html";
+       }, 35000);
     </script>
     <style>
-      
-     #miVideo{
-        width: 100%;
-        height: 95vh;
-        z-index: -10;
-     }
+        #miVideo, .container, .rotating-image, .particles {
+            display: none; /* Ocultar el contenido al cargar la página */
+        }
+        #miVideo {
+            width: 100%;
+            height: 95vh;
+            z-index: -10;
+        }
+        .btn-custom{
+            background-color: #4CAF50;
+            border: 1px solid white;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            margin: 0 auto;
+            font-size: 16px;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateY(-50%);
+        }
         .rotating-image {
             position: absolute;
             top: 80%;
@@ -58,6 +96,10 @@
     </style>
 </head>
 <body>
+    <div>
+        <button class="btn-custom" id="mostrarBoton">Clic aquí </button>
+    </div>
+
     <div class="container">
         <div class="text">¡Feliz cumpleaños Santiago!!!!!!!!</div>
         <div class="presents">
@@ -94,7 +136,5 @@
     <div class="particles"></div>
 
     <script src="happy.js"></script>
-   
- 
 </body>
 </html>
