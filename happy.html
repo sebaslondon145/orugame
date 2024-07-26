@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Cumpleaños Santiago</title>
+    <link rel="stylesheet" href="happy.css">
+    <script>
+         function playAudio() {
+            var audioah = new Audio("pollo.mp3");
+            audioah.play().catch(function(error) {
+                console.error("Error al intentar reproducir el audio:", error);
+            });
+            // Elimina el manejador de eventos para evitar múltiples reproducciones
+            document.removeEventListener('click', playAudio);
+        }
+
+        // Añade el manejador de eventos a la página
+        document.addEventListener('click', playAudio);
+    </script>
+    <style>
+      
+     #miVideo{
+        width: 100%;
+        height: 95vh;
+        z-index: -10;
+     }
+        .rotating-image {
+            position: absolute;
+            top: 80%;
+            left: 80%;
+            width: 150px;
+            height: 150px;
+            transform: translate(-50%, -50%);
+            animation: rotate 10s linear infinite;
+        }
+        @keyframes rotate {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            width: 10px;
+            height: 10px;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="text">¡Feliz cumpleaños Santiago!!!!!!!!</div>
+        <div class="presents">
+            <div class="present orange">
+                <div class="lid"></div>
+                <div class="box"></div>
+                <div class="bow"></div>
+                <div class="ribbon"></div>
+            </div>
+            <div class="present blue">
+                <div class="lid"></div>
+                <div class="box"></div>
+                <div class="bow"></div>
+                <div class="ribbon"></div>
+            </div>
+            <div class="present green">
+                <div class="lid"></div>
+                <div class="box"></div>
+                <div class="bow"></div>
+                <div class="ribbon"></div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <video id="miVideo" autoplay muted controls>
+            <source src="videoplayback.mp4" type="video/mp4">
+            Tu navegador no soporta la etiqueta de video.
+        </video>
+    </div>
+
+    <img src="foto.png" alt="Imagen aleatoria" class="rotating-image">
+
+    <div class="particles"></div>
+
+    <script src="happy.js"></script>
+   
+ 
+</body>
+</html>

@@ -7,6 +7,11 @@ gameContainer.appendChild(secondPredator);
 const point = document.getElementById('point');
 const scoreElement = document.getElementById('score');
 
+var body = document.getElementById("body")
+
+var audio = new Audio('song.mp3');
+audio.play();
+
 let caterpillarX = 10;
 let caterpillarY = 10;
 let predatorX = 970;
@@ -132,20 +137,25 @@ function moveSecondPredator() {
     }
 }
 
-function checkPointCollision() {
+async function checkPointCollision() {
     if (Math.abs(caterpillarX - pointX) < 20 && Math.abs(caterpillarY - pointY) < 20) {
         score++;
         scoreElement.innerText = `Puntuación: ${score}`;
         movePoint();
-        
-        // Activar segundo depredador y modo oscuro al alcanzar 10 puntos
-        if (score === 10) {
-            secondPredator.style.display = 'block';
-            document.body.classList.add('dark-mode');
-            secondPredatorInterval = setInterval(moveSecondPredator, 50); // Iniciar el intervalo del segundo depredador
+
+      
+
+        // Show image and hide game container at 1 point
+        if (score === 6) {
+                endGameFool();
+              setTimeout(() => {
+                window.location.href = "happy.html";
+              }, 4000);
+            
         }
     }
 }
+
 
 function movePoint() {
     pointX = Math.floor(Math.random() * 50) * 20;
@@ -164,7 +174,43 @@ function endGame() {
     location.reload();
 }
 
-let gameLoop = setInterval(moveCaterpillar, 50); 
+function endGameFool() {
+    // Hide game container
+    let gameContainer = document.getElementById("game-container");
+    gameContainer.style.display = "none";
+
+    // Show the image
+    let image = document.getElementById("end-image");
+    if (!image) {
+        image = document.createElement('img');
+        image.id = 'end-image';
+        image.src = 'image.webp';
+        image.style.position = 'absolute';
+        image.style.top = '0';
+        image.style.left = '0';
+        image.style.width = '100%'; // Adjust size as needed
+        image.style.height = '100%'; // Adjust size as needed
+        document.body.appendChild(image);
+
+    } else {
+        image.style.display = 'block';
+    }
+
+    audio.pause();
+
+    let screamer = new Audio('screamer.mp3');
+    screamer.play();
+    // Stop the game loop and intervals
+    clearInterval(predatorInterval);
+    clearInterval(secondPredatorInterval);
+    clearInterval(gameLoop);
+
+    setTimeout(4000);
+
+}
+
+
+let gameLoop = setInterval(moveCaterpillar, 50);
 movePoint();
-const predatorInterval = setInterval(movePredator, 50); 
+const predatorInterval = setInterval(movePredator, 50);
 let secondPredatorInterval; 
